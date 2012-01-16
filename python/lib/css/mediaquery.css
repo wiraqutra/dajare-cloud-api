@@ -1,0 +1,82 @@
+.ui-loader,.ui-body-a,.ui-corner-all{
+	display:none;
+}
+#content ul li a.login,#content ul li a#signout{
+	width:100% !important;
+	background-position:top right;
+}
+/*Å@and (max-device-width: 540px) and (max-device-width: 640px)*/
+@media screen and (min-width: 0px) and (max-device-width: 1000px){
+	html{
+		width:100% !important;
+		font-size:100% !important;
+		overflow-y:scroll !important;
+	}
+	#utility,#logo,#daj,#daj_rank{
+		width:95% !important;
+		margin:0 auto !important;
+		float:none !important;
+	}
+	#SocialButton{
+		/*display:none;*/
+		width:242px !important;
+		padding:16px !important;
+		margin:0 auto !important;
+		float:none !important;
+		text-align:center !important;
+	}
+	#daj{
+		margin:0 auto 16px auto !important;
+	}
+	.mob{
+		display:block !important;
+	}
+	.pc{
+		display:none !important;
+	}
+	#totalDajare{
+		text-align:center !important;
+		font-size:150%;
+	}
+	#dse{
+		width:95% !important;
+		margin:0 auto !important;
+	}
+	#dsesubmit{
+		width:100% !important;
+		margin:0 auto !important;
+	}
+	#dse{
+		border:5px #333 solid !important;
+	}
+	.searchTitle{
+		width:95% !important;
+	}
+	#dsesubmit{
+		margin:12px auto !important;
+	}
+	#dseReloads{
+		position:static !important;
+		text-align:center !important;
+		
+	}
+	.comment{
+		display:none !important;
+	}
+	.status #header .backToTop{
+		/*float:none !important;*/
+		font-size:18pt !important;
+	}
+	.status #header .backToTop a{
+		font-size:18pt !important;
+	}
+	.status .csvDajare .text{
+		font-size:18pt;
+	}
+	.mail{
+		width:95% !important;
+	}
+	.mail .lead,.mail .lineText input,.mail .multiText textarea{
+		width:95% !important;
+	}
+}

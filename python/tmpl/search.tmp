@@ -1,0 +1,121 @@
+<!doctype html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+	<meta name="keywords" content="Hack For Japan,Hack4JP,app10,ニッポン放送,駄洒落,だじゃれ,ダジャレ">
+	<meta name="description" content="Hack For Japan とニッポン放送app10という異色の組み合わせが生んだ奇跡のコラボ企画「ダジャレクラウド」 ダジャレで人を幸せにすることを目指し、日々ダジャレを収集中。">
+	<meta property="og:title" content="「ダジャレクラウド Beta version」〜">
+    <meta property="og:type" content="">
+    <meta property="og:description" content="Hack For Japan とニッポン放送app10という異色の組み合わせが生んだ奇跡のコラボ企画「ダジャレクラウド」 ダジャレで人を幸せにすることを目指し、日々ダジャレを収集中。">
+    <meta property="og:url" content="http://dajare1242.appspot.com/search/q/{{words}}">
+    <meta property="og:image" content="http://dajare1242.appspot.com/lib/images/logo_alpha.png">
+    <meta property="og:site_name" content="「ダジャレクラウド Beta version」">
+    <meta property="og:email" content="hack4jp_dajare@googlegroups.com">
+    <meta property="og:phone_number" content="">
+    <meta property="fb:app_id" content="143364615746975">
+    <meta name="viewport" content="width=320; initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	<link type="text/css" rel="stylesheet" href="/lib/css/dajare1242.css">
+	<link type="text/css" rel="stylesheet" href="/lib/css/colorbox.css">
+	<link type="text/css" rel="stylesheet" href="/lib/css/mediaquery.css">
+    <title>ダジャレクラウド Beta version</title>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.cookie.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.vgrid.0.1.6.min.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.colorbox-min.js"></script>
+	<!-- <script type="text/javascript" language="javascript" src="/lib/js/jquery.dajare.cloud.js"></script>	
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.dajare.cloud.main.js"></script> -->
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.dajare.cloud.js"></script>
+	<script type="text/javascript">
+	// GA
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-27293592-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	  // GA
+	</script>
+	<style>
+		#daj{
+			width:98% !important;
+		}
+	</style>
+  </head>
+  <body>
+  	<div class="container search" id="wrapper">
+  		<div class="global_menu" id="global_header">
+  			<div class="gm_left">
+  				<ul>
+  					<li><a class="dajareInfo" href="javascript:void(0);" title="ダジャレクラウドから皆様へ"></a></li>
+  					<li><a class="dajareAPI" href="javascript:void(0);" style="display: none;">ダジャレクラウド&nbsp;API</a></li>
+  					<li><a class="dajareFeedBack" href="/mail" title="お問い合わせ"></a></li>
+  				</ul>
+  			</div>
+  			<div class="gm_right">
+  				<ul>
+	  				{% if signin %}
+					<li style="position:relative;">
+						<a class="dajareLogout" href="javascript:void(0);" title="Sign out"><img src="{{user.2}}" alt="{{user.0}}" width=32 height=32></a>
+						<div id="usermode">
+							<ul class="submenu">
+								<li><a href="javascript:void(0);" class="setting">設定</a></li>
+								<li><a href="javascript:void(0);" class="signout">ログアウト</a></li>
+							</ul>
+						</div>
+					</li>
+					{% else %}
+					<li><a class="dajareLogin" href="javascript:void(0);" title="Sign in"></a>
+						<div id="usermode">
+							<ul class="submenu">
+								<li><a href="{{oauthUrl}}">ログイン or 新規登録</a></li>
+							</ul>
+						</div>
+					</li>
+					{% endif %}
+				</ul>
+  			</div>
+  			<br clear="all">
+  		</div>
+  		<div id="header">
+  			<div id="logo"><a href="/"><img src="http://dajare-mockup.appspot.com/lib/images/logo_alpha.png"></a></div>
+  			<div class="backToTop" style="font-size:36pt;float:right;"><a href="/">トップへ戻る</a></div>
+  			<br clear="all">
+  		</div>
+  		<!-- <div id="searchResultPanel">
+  			<form name="dajareSearch" action="/search" method="POST">
+  				<div class="searchTitle">ダジャレ・リサーチ</div>
+  				<input id="dse" name="q" value="{{words}}"><input type="submit" id="dsesubmit" value="検索">
+  			</form>
+  		</div> -->
+  		<div id="dseResult">
+  			<div class="searchResultTitle">
+		  		<span class="word"><a href="http://www.google.co.jp/search?q=&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;hl=ja">{{words}}</a></span>での検索結果&thinsp;
+		  		<span class="resultNum">{{json.allTotal}}</span>件
+	  		</div>
+	  		<ul>
+	  			{% for p in page %}
+	  			<li><a data-count="1" href="/search?q={{words}}&p={{forloop.counter}}">{{forloop.counter}}</a></li>
+	  			{% endfor %}
+	  		</ul>
+	  		<br clear="all">
+  		</div>
+  		<div id="daj">
+  			<h3>検索結果</h3>
+  			{% for j in json.results %}
+  			<div class="csvDajare">
+  				<span class="text" data-id="{{j.srcId}}">{{j.text}}</span><br>
+  				<span class="date"><a href="/status/{{j.srcId}}">Check！</a> - <script type="text/javascript">createDate('{{j.createDate}}')</script></span>
+  				<span class="profile_image"><a href="https://twitter.com/{{j.idText}}" target="_blank"><img src="{{j.iconURL}}" width="24" height="24"></a></span>
+  			</div>
+  			{% endfor %}
+  		</div>
+  		<br clear="all">
+  </body>
+</html>
+
+

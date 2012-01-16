@@ -1,0 +1,138 @@
+<!doctype html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <meta charset="utf-8">
+	<meta name="keywords" content="Hack For Japan,Hack4JP,app10,ニッポン放送,駄洒落,だじゃれ,ダジャレ">
+	<meta name="description" content="Hack For Japan とニッポン放送app10という異色の組み合わせが生んだ奇跡のコラボ企画「ダジャレクラウド」 ダジャレで人を幸せにすることを目指し、日々ダジャレを収集中。">
+	<meta property="og:title" content="{{json.text}}">
+    <meta property="og:type" content="">
+    <meta property="og:description" content="「ダジャレクラウド」 ダジャレで人を幸せにすることを目指し、日々ダジャレを収集中。">
+    <meta property="og:url" content="http://dajare1242.appspot.com/status/{{json.srcId}}">
+    <meta property="og:image" content="http://dajare1242.appspot.com/lib/images/logo_alpha.png">
+    <meta property="og:site_name" content="「ダジャレクラウド Beta version」">
+    <meta property="og:email" content="hack4jp_dajare@googlegroups.com">
+    <meta property="og:phone_number" content="">
+    <meta property="fb:app_id" content="143364615746975">
+    <meta name="viewport" content="width=320; initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	<link type="text/css" rel="stylesheet" href="/lib/css/dajare1242.css">
+	<link type="text/css" rel="stylesheet" href="/lib/css/colorbox.css">
+	<link type="text/css" rel="stylesheet" href="/lib/css/mediaquery.css">
+    <title>{{json.text}} - 「ダジャレクラウド Beta version」</title>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.cookie.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.vgrid.0.1.6.min.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.colorbox-min.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.dajare.cloud.js"></script>
+	<script type="text/javascript">
+	// GA
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-27293592-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	  // GA
+	</script>
+	
+	<style type="text/css">
+		#daj{
+			width:auto !important;
+			border:0px #e0e0e0 solid;
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;
+		}
+		.csvDajare{
+			border-bottom:0px #e0e0e0 solid;
+		}
+		#SocialGraph{
+			padding:16px;
+		}
+		#SocialGraph h3{
+			margin:0;
+		}
+	</style>
+  </head>
+  <body>
+  	<div class="global_menu" id="global_header">
+		<div class="gm_left">
+			<ul>
+				<li><a class="dajareInfo" href="javascript:void(0);" title="ダジャレクラウドから皆様へ"></a></li>
+				<li><a class="dajareAPI" href="javascript:void(0);" style="display: none;">ダジャレクラウド&nbsp;API</a></li>
+				<li><a class="dajareFeedBack" href="/mail" title="お問い合わせ"></a></li>
+			</ul>
+		</div>
+		<div class="gm_right">
+			<ul>
+				{% if signin %}
+				<li style="position:relative;">
+					<a class="dajareLogout" href="javascript:void(0);" title="Sign out"><img src="{{user.2}}" alt="{{user.0}}" width=32 height=32></a>
+					<div id="usermode">
+						<ul class="submenu">
+							<li><a href="javascript:void(0);" class="setting">設定</a></li>
+							<li><a href="javascript:void(0);" class="signout">ログアウト</a></li>
+						</ul>
+					</div>
+				</li>
+				{% else %}
+				<li><a class="dajareLogin" href="javascript:void(0);" title="Sign in"></a>
+					<div id="usermode">
+						<ul class="submenu">
+							<li><a href="{{oauthUrl}}">ログイン or 新規登録</a></li>
+						</ul>
+					</div>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+		<br clear="all">
+	</div>
+  	<div class="container status" id="wrapper">
+  		
+  		<div id="header">
+  			<div id="logo"><a href="/"><img src="http://dajare-mockup.appspot.com/lib/images/logo_alpha.png"></a></div>
+  			<div class="backToTop"><a href="/">トップへ戻る</a></div>
+  			<br clear="all">
+  		</div>
+  		
+  		<div id="daj">
+  			{% if invild_flag %}
+  			<div id="SocialGraph">
+  				<!-- <h3>お気に入り</h3> -->
+  				<div class="button">
+					<iframe src="//www.facebook.com/plugins/like.php?href={{fb}}&amp;send=false&amp;layout=box_count&amp;width=90&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=verdana&amp;height=60&amp;appId=143364615746975" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:70px; height:62px;" allowTransparency="true"></iframe>
+	  				<!-- Place this tag in your head or just before your close body tag -->
+					<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+					  {lang: 'ja'}
+					</script>
+					<!-- Place this tag where you want the +1 button to render -->
+					<div class="g-plusone" data-size="tall"></div>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-text="#dajare #dajare-fav {{host}}" data-count="vertical" data-lang="ja">ツイート</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+	  				<iframe src="/like/{{json.srcId}}" frameborder="0" scrolling="no" width="80" height="62"></iframe>
+	  				
+  				</div>
+  			</div>
+  			<div class="csvDajare">
+  				<span class="text" data-id="{{json.srcId}}">{{json.text}}</span><br>
+  				<span class="date"><script type="text/javascript">createDate('{{json.createDate}}')</script></span>
+  				<span class="profile_image"><a href="https://twitter.com/{{json.idText}}" target="_blank"><img src="{{json.iconURL}}"></a></span>
+  				<br clear="all">
+  				<!-- <span class="source">Source:<a href="{{host}}" target="_blank">{{host}}</a></span> -->
+  			</div>
+  			{% else %}
+  			<div class="csvDajare">
+  				<span class="text">あれ？該当のダジャレがみつかりません。</span>
+  			</div>
+  			{% endif %}
+  			
+  		</div>
+  	</div>
+  </body>
+</html>
+
+

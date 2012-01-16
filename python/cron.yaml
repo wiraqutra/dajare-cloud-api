@@ -1,0 +1,5 @@
+cron:
+- description: dajare1242 bot
+  url: /tweet
+  schedule: every 6 hours
+  timezone: Asia/Tokyo
