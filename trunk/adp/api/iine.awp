@@ -1,0 +1,57 @@
+#!/bin/adp 
+<%
+
++mkdat($id,$flg,$r)
+    ,$dat == db.sql@( "SELECT *, 0 as rank FROM dajares WHERE source_id = ?",[$id]).dajare_conv
+    ,$r == { 'total' => 1, 'allTotal' => 1,'seachBy' => NIL, 'results' => $dat, 'iineFlg' => $flg }
+	;
+
++iine_upd('1', $id, $upd, $uid, $sns, $sql, $result, $count, $r)
+    ,db.sql("UPDATE dajares SET good_count = good_count + ? WHERE source_id = ? ", [$upd,$id])
+    ,db.sql($sql, [ $id, $uid, $sns])
+    ,db.commit
+	,mkdat($id,$result,$r)
+	;
++iine_upd(  $, $id, $upd, $uid, $sns, $sql, $result, $count, $r)
+	,mkdat($id,$count,$r)
+	;
+
+
++iine_tag('twid', 'Twitter');
++iine_tag('fbid', 'Facebook');
++iine_onoff_tag( 0, "INSERT INTO iine( source_id, uid, sns) SELECT ?, ?, ? ", 1, 1);
++iine_onoff_tag( $, "DELETE FROM iine WHERE source_id = ? AND uid = ? AND sns = ? ", 0, -1);
+
++iine_body($id, $r, $keycnt)
+    ,iine_tag($qstr,$sns)
+      ,$uid = query($qstr)
+	  ,$count == db.sql("SELECT COUNT(*) FROM iine WHERE source_id = ? AND uid = ? AND sns = ? ",[ $id, $uid, $sns])
+      ,iine_onoff_tag( =$count.int, $sql, $result, $upd)
+	    ,iine_upd($keycnt, $id, $upd, $uid, $sns, $sql, $result, $count, $r)
+	  ,!,;
+
++iine($r)
+    ,$key == query('key')
+    ,$count == db.sql("SELECT COUNT(*) FROM apps WHERE `key` = ?", [$key])
+    ,$id == query('id')
+	,iine_body($id, $r, $keycount)
+    ,!,;
++iine($r)
+    ,$id == query('id')
+	,iine_body($id, $r, '0')
+    ,!,;
++iine([''])
+	,!,;
+
++jsonp($data, $r),$r == sprintf("%s(%s)", =query("callback"), =$data.json),!;
++jsonp($data, $r),$r == json($data),!;
+
++result($data),env('REQUEST_METHOD','GET')
+	,response_header('Content-Type: application/json; charset=utf-8')
+	,$data.json.prtn,!;
++result($)
+	,response_header('Location: http://dajare1242.appspot.com/'),!;
+
+,iine.result;
+
+%>

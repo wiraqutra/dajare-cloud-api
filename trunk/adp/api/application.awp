@@ -1,0 +1,26 @@
+<%
++db('DSN=dajare');
++dajare_conv( @rec, $dat)
+    ,$exchgmap == { 
+		'created_at' => 'createDate', 
+		'geo' => 'geoLocation',
+		'profile_image_url' => 'iconURL', 
+		'id_str' => 'srcId',
+		'text' => 'text' }
+	,$dat == $rec['raw_data']._json.remap($exchgmap)
+			+ [ 'fbLike' | 0 ]
+			+ [ 'idText' | =$rec['handle'].str ]
+			+ [ 'myPoint' | =$rec['score'].int ]
+			+ [ 'myFav' | =$rec['good_count'].int ]
+			+ [ 'rs' | 0 ]
+			+ [ 'srcAll' | '' ]
+			+ [ 'srcURL' | ='http://twitter.com/#!/dajarei/status/' + $rec['source_id'].str ]
+			+ [ 'totalRank' | =$rec['rank'].int ]
+			+ [ 'twFav' | 0 ]
+			+ [ 'twRT' | 0 ]
+	;
+
++keyword_conv( $rec, $rec)
+	;
+%>
+

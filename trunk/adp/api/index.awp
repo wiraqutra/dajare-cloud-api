@@ -1,0 +1,65 @@
+#!/bin/adp 
+<%
++page_size(20),!;
++page($p),query("page", $v), $p == $v.int(), !;
++page(1), !;
+
++color($t, $c), 1 == $t % 2, $c == '#E0FFFF', !;
++color($t, $c), 0 == $t % 2, $c == '#FFffE0', !;
+
++next_page($p), $x == page * page_size, $x <= global('count').int, $p == sprintf('<a href="?page=%d&name=%s&keyword=%s">Next Page</a>', =page + 1, =query('name','').urlencode, =query('keyword','').urlencode), !;
++next_page("Next Page"), !;
++previous_page($p), =page > 1, $p == sprintf('<a href="?page=%d">Previous Page</a>', =page - 1), !;
++previous_page("Previous Page"), !;
+
++handle($q),$q = cat('%', =query('name'), '%'), !;
++handle('%'),!;
+
++qstr($q),$q = cat('%', =query('keyword'), '%'), !;
++qstr('%'),!;
+
++dajare_list(@l),db.sql('select dajare, handle, ADDTIME(ctime, "9:00:00") as jp_ctime, good_count, source_id from dajares where handle like ? and dajare like ? Order By ctime desc LIMIT ?, ? ', [ =handle, =qstr, (page - 1) * page_size, =page_size], @l);
+
+# let's start 
+,db.sql('select count(*) from dajares', [])._global('count');
+
+
+
+%>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh" content="600">
+</head>
+<body>
+ただいまの保存しているダジャレの数：<%=global('count')%>&nbsp;<br>
+　<a href="csv.awp">・CSVダウンロード（右クリック：ダウンロードで）</a><br>
+　<a href="apicall.html">・APIについて</a><br>
+　<a href="index_rank.awp">・ランキング</a><br>
+　<a href="index_keyword_rank.awp">・検索キーワードランキング</a><br>
+　<a href="index_apps.awp">・登録アプリケーション</a><br>
+
+<form action="index.awp" >
+名前：<input type="text" size="20" name="name" value="<%= query?('name')%>"><br>
+ダジャレ：<input type="text" size="30" name="keyword" value="<%= query?('keyword')%>"><p>
+&nbsp;<input type="submit" value="検索">
+</form>
+ダジャレ一覧(ページ:<%=page%>)
+<p>
+<a href="?page=1">Top_Page</a>&nbsp;|&nbsp;<%=r previous_page %>&nbsp;|&nbsp;<%=r next_page %>
+<table>
+  <tr bgcolor="#E0E0E0"><td>時刻</td><td>ハンドル名</td><td>ダジャレ</td><td>いいね</td></tr>
+<%,dajare_list(@l)%>
+  <tr bgcolor=<%= color(=times) %> valign="top"><td><%= $l['jp_ctime']%></td><td><%= $l['handle']%></td><td><%= $l['dajare']%></td><td><%= $l['good_count']%><br><a href="http://dajare-api.appspot.com/iine/?id=<%=$l['source_id']%>&fbid=katsuhisa_ohfuj&key=7C23654DEF84EF990D00C67C5CD5AA183607649A" >いいね</a>
+
+<a href="http://dajare.ohfuji.name/iine_.awp?id=<%=$l['source_id']%>&fbid=katsuhisa_ohfuj&key=7C23654DEF84EF990D00C67C5CD5AA183607649A" >いいねでばっぐ</a>
+
+<a href="http://dajare.ohfuji.name/iine_.awp?id=<%=$l['source_id']%>&fbid=katsuhisa_ohfuj" >いいねでばっぐ2</a>
+
+</td></tr>
+<%,next;%>
+</table>
+<a href="?page=1">Top_Page</a>&nbsp;|&nbsp;<%=r previous_page %>&nbsp;|&nbsp;<%=r next_page %>
+</body>
+</html>

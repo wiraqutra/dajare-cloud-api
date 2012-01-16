@@ -1,0 +1,6 @@
+#!/bin/adp 
+<%
+,response_header('Content-Type: text/plain; charset=utf-8');
+,db.sql@('select ADDTIME(ctime, "9:00:00") as jp_ctime, dajare, handle from dajares',[], @rec)
+,$rec.csv.prtn,next;
+%>

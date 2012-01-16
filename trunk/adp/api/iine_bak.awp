@@ -1,0 +1,78 @@
+#!/bin/adp 
+<%
+
++iine_inc($id)
+    ,db.sql("UPDATE dajares SET good_count = good_count + 1 WHERE source_id = ? ", [$id])
+    ,db.commit
+	,!,;
++iine_dec($id)
+    ,db.sql("UPDATE dajares SET good_count = good_count - 1 WHERE source_id = ? ", [$id])
+    ,db.commit
+	,!,;
+
++mkdat($id,$flg,$r)
+    ,$dat == db.sql@( "SELECT *, 0 as rank FROM dajares WHERE source_id = ?",[$id]).dajare_conv
+    ,$r == { 'total' => 1, 'allTotal' => 1,'seachBy' => NIL, 'results' => $dat, 'iineFlg' => $flg }
+	;
+
++iine_body_tw($id,$twid,0,$r)
+	,iine_inc($id)
+	,db.sql("INSERT INTO iine( source_id, twid) SELECT ?, ? ", [$id, $twid])
+    ,db.commit
+    ,mkdat($id,1,$r)
+	,!,;
++iine_body_tw($id,$twid,$,$r)
+	,iine_dec($id)
+	,db.sql("DELETE FROM iine WHERE source_id = ? AND twid = ?", [$id, $twid])
+    ,db.commit
+    ,mkdat($id,0,$r)
+	,!,;
++iine_body_fb($id,$fbid,0,$r)
+	,iine_inc($id)
+	,db.sql("INSERT INTO iine( source_id, fbid) SELECT ?, ? ", [$id, $fbid])
+    ,db.commit
+    ,mkdat($id,1,$r)
+	,!,;
++iine_body_fb($id,$fbid,$,$r)
+	,iine_dec($id)
+	,db.sql("DELETE FROM iine WHERE source_id = ? AND fbid = ?", [$id, $fbid])
+    ,db.commit
+    ,mkdat($id,0,$r)
+	,!,;
++iine_body($id,$r)
+    ,$twid = query('twid')
+	,$count == db.sql("SELECT COUNT(*) FROM iine WHERE source_id = ? AND twid = ? ",[ $id, $twid])
+    ,iine_body_tw( $id, $twid, =$count.int, $r)
+	,!,;
++iine_body($id,$r)
+    ,$fbid = query('fbid')
+	,$count == db.sql("SELECT COUNT(*) FROM iine WHERE source_id = ? AND fbid = ?",[ $id, $fbid])
+    ,iine_body_fb( $id, $fbid, =$count.int, $r)
+	,!,;
+
++iine($r)
+    ,$key == query('key')
+    ,$count == db.sql("SELECT COUNT(*) FROM apps WHERE `key` = ?", [$key])
+    ,$count == '1'
+    ,$id == query('id')
+	,iine_body($id, $r)
+    ,!,;
++iine($r)
+    ,$id == query('id')
+    ,mkdat($id,'',$r)
+    ,!,;
++iine([''])
+	,!,;
+
++jsonp($data, $r),$r == sprintf("%s(%s)", =query("callback"), =$data.json),!;
++jsonp($data, $r),$r == json($data),!;
+
++result($data),env('REQUEST_METHOD','GET')
+	,response_header('Content-Type: application/json; charset=utf-8')
+	,$data.json.prtn,!;
++result($)
+	,response_header('Location: http://dajare1242.appspot.com/'),!;
+
+,iine.result;
+
+%>

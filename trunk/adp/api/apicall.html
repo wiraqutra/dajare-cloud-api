@@ -1,0 +1,167 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<a href="index.awp">トップページに戻る</a><br>
+<h3>ダジャレクラウドAPIモックアップ</h3>
+<form action="http://dajare-api.appspot.com/find/" >
+検索文字列　：<input type="text" size="30" name="keyword" ><br>
+ページ　　　　：<input type="text" size="10" name="page" value="1" ><br>
+ページサイズ：<input type="text" size="10" name="size" value="20"><br>
+&nbsp;<input type="submit" value="JSONデータの取得">
+</form>
+<br>
+
+<h3>■溜め込んだダジャレ数を返すAPI</h3>
+<div style="padding-left: 1em">
+全体のダジャレ数を返します。
+<h4>□URL</h4>
+http://dajare-api.appspot.com/count/
+<h4>□パラメータ</h4>
+なし
+<h4>□返信データ</h4>
+以下のとおりです。<br>
+
+{"results":<i>データ数</i>, "seachBy":null}
+</div>
+<h3>■検索API</h3>
+<div style="padding-left: 1em">
+ダジャレの一覧を取得します。キーワード検索、特定のダジャレを取得する場合にも使用できます。
+<h4>□URL</h4>
+http://dajare-api.appspot.com/find/<i>id</i><br>
+または<br>
+http://dajare-api.appspot.com/find/?keyword=<i>検索文字列</i>&page=<i>ページ</i>&size=<i>1ページの件数</i><br>
+<br>
+<h4>パラメータ</h4>
+　<i>id</i>　：　取得するdajareのid(twitterのID)を指定します。allの指定または省略すると全ダジャレを取得します。<br>
+　idを指定しない場合は以下のパラメーターが使用できます。
+　keyword　：　keywordで指定されたダジャレを検索します。省略すると全ダジャレを対象にします。<br>
+　page　：　取得するページを指定します。省略時は1（先頭ページ）になります。<br>
+　size　：　1ページ内のダジャレ数を指定します。省略時は20(件）になります。<br>
+<br>
+<h4>□URL指定例</h4>
+<ul>
+<li>最初から20件のダジャレを取得(1ページ目）: http://dajare-api.appspot.com/find/?page=1</li>
+<li>21件目から40件のダジャレを取得（2ページ目）: http://dajare-api.appspot.com/find/?page=2</li>
+<li>キーワードapp10があるダジャレを取得: http://dajare-api.appspot.com/find/?keyword=app10</li>
+<li>id(twitterのID)が122327091931910144のダジャレを取得: http://dajare-api.appspot.com/find/122327091931910144</li>
+</ul>
+
+</div>
+<h3>■ランキングAPI</h3>
+<div style="padding-left: 1em">
+
+ランキング一覧を取得します。
+<h4>□URL</h4>
+http://dajare-api.appspot.com/rank/<br>
+<br>
+<h4>パラメータ</h4>
+　なし（開発中）
+<br>
+<h4>□URL指定例</h4>
+<ul>
+<li>ランキングの取得: http://dajare-api.appspot.com/rank/</li>
+</ul>
+
+<h4>□返信データ</h4>
+形式は、現行のGAE上のdajare APIと同様に作成しています。<br>
+http://dajare1242.appspot.com/api/user/dajare/find<br>
+<br>
+JSONのトップレベルのオブジェクトは以下のとおりです。<br>
+total：ランキングの数。<br>
+allTotal：ランキングの数(totalと同じ)。<br>
+results：ランキング結果内容（ダジャレ）。<br>
+
+<h4>□その他</h4>
+ランキングのロジックについては開発中です。
+週毎、年間ランニング等については開発中です。
+現在は毎晩、ランキングを更新しています。
+
+</div>
+<h3>■検索キーワードランキングAPI</h3>
+<div style="padding-left: 1em">
+
+検索キーワードのランキング一覧を取得します。
+<h4>□URL</h4>
+http://dajare-api.appspot.com/keyword_rank/<br>
+<br>
+<h4>パラメータ</h4>
+　なし（開発中）
+<br>
+<h4>□URL指定例</h4>
+<ul>
+<li>検索キーワードランキングの取得: http://dajare-api.appspot.com/keyword_rank/</li>
+</ul>
+
+<h4>□返信データ</h4>
+・JSONのトップレベルのオブジェクトは以下のとおりです。<br>
+total：ランキングの数。<br>
+allTotal：ランキングの数(totalと同じ)。<br>
+results：検索キーワードの内容。<br>
+<br>
+・results内のオブジェクトは以下のとおりです。<br>
+keyword：検索キーワード<br>
+score：検索キーワードのスコア<br>
+rank：検索キーワードの順位<br>
+last_query：最終検索時刻<br>
+<br>
+<h4>□その他</h4>
+ランキングのロジックについては開発中です。
+週毎、年間ランニング等については開発中です。
+現在は毎晩、ランキングを更新しています。
+
+
+</div>
+<h3>■いいねAPI</h3>
+<div style="padding-left: 1em">
+
+だじゃれにポイントを付与・削除します。
+
+<h4>□URL</h4>
+　http://dajare-api.appspot.com/iine/<br>
+<br>
+<h4>□パラメータ</h4>
+　<i>id</i>　　：　ポイントを付与するダジャレのid(twitterのID)を指定します。<br>
+　<i>twid</i>　：　ポイントを付与する人のtwitterのIDを指定します。<br>
+　<i>fbid</i>　：　ポイントを付与する人のFaceBookのIDを指定します。<br>
+　<i>key</i> 　：　アプリケーションキーを指定します。<br>
+アプリケーションキーは、事前に登録することにより割り振られます。
+twid、fbidはどちらか必ず指定します（両方同時に指定した場合は、twidが優先されます）。
+(id,twid)または(id,fbid)の組でポイントを付与します。既にポイントを付与した後に同じ(id,twid)が指定された場合、ポイントを削除します。
+<br>
+<h4>□返信データ</h4>
+　検索APIで、find/<i>id</i> を指定したときと同様ですが、iineFlgが追加になります。<br>
+JSONのトップレベルのオブジェクトは以下のとおりです。<br>
+total：ランキングの数。<br>
+allTotal：ランキングの数(totalと同じ)。<br>
+results：ランキング結果内容（ダジャレ）。<br>
+iineFlg：　１：いいねポイントを付与しました。０：いいねポイントを削除しました。
+
+<h4>□いいねのデータ</h4>
+いいねポイントは、JSONのデータの下記の名前で取得できます。<br>
+myFav
+
+
+</div>
+<h3>■いいね値取得API</h3>
+<div style="padding-left: 1em">
+だじゃれのいいねポイント取得します。
+
+<h4>□URL</h4>
+　http://dajare-api.appspot.com/get_iine/<br>
+<br>
+<h4>□パラメータ</h4>
+　<i>id</i>　　：　ポイントを参照するダジャレのid(twitterのID)を指定します。<br>
+<br>
+<h4>□返信データ</h4>
+　検索APIで、find/<i>id</i> を指定したときと同様です。<br>
+
+<h4>□いいねのデータ</h4>
+いいねポイントは、JSONのデータの下記の名前で取得できます。<br>
+myFav
+
+</body>
+</html>
+

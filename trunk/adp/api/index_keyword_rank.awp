@@ -1,0 +1,25 @@
+#!/bin/adp 
+<%
++color($t, $c), 1 == $t % 2, $c == '#E0FFFF', !;
++color($t, $c), 0 == $t % 2, $c == '#FFffE0', !;
+
++dajare_list(@l),db.sql('SELECT * FROM keyword_scores order by rank', [], @l);
+
+%>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh" content="600">
+</head>
+<body>
+検索キーワードランキング  <a href="/">戻る</a>
+<p>
+<table>
+  <tr bgcolor="#E0E0E0"><td>順位</td><td>スコア</td><td>キーワード</td><td>最終検索時刻</td></tr>
+<%,dajare_list(@l)%>
+  <tr bgcolor=<%= color(=times) %> valign="top"><td><%= $l['rank']%></td><td><%= $l['score']%></td><td><%= $l['keyword']%></td><td><%= $l['last_query']%></td></tr>
+<%,next;%>
+</table>
+</body>
+</html>
