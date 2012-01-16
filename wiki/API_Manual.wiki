@@ -1,2 +1,1 @@
 =ダジャレクラウドにあるデータの取得方法について=
-<!-- [http://dajare.ohfuji.name/apicall.html APIマニュアル] -->
