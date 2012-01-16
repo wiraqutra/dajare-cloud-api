@@ -1,0 +1,47 @@
+application: dajare1242
+version: 3
+runtime: python
+api_version: 1
+builtins:
+- remote_api: on
+
+handlers:
+  
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin  
+
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+
+- url: /lib/images
+  static_dir: lib/images
+  
+- url: /lib/css
+  static_dir: lib/css
+  
+- url: /lib/css/images
+  static_dir: lib/css/images
+
+- url: /lib/js
+  static_dir: lib/js
+  
+- url: /lib/json
+  static_dir: lib/json
+  
+- url: /canvas.*
+  script: canvas/main.py
+  
+- url: /mail.*
+  script: mail/main.py
+
+- url: /manual.*
+  script: manual/main.py
+
+- url: /tweet.*
+  script: tweet.py
+  login: admin
+
+- url: /.*
+  script: main.py

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta name="keywords" content="Hack For Japan,Hack4JP,app10,ニッポン放送,駄洒落,だじゃれ,ダジャレ">
+	<meta name="description" content="Hack For Japan とニッポン放送app10という異色の組み合わせが生んだ奇跡のコラボ企画「ダジャレクラウド」 ダジャレで人を幸せにすることを目指し、日々ダジャレを収集中。">
+	<meta name="robots" content="">
+	<meta name="author" content="">
+	<meta name="copyright" content="">
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+	<link type="text/css" rel="stylesheet" href="/lib/css/dajare1242.css">
+	<link type="text/css" rel="stylesheet" href="/lib/css/colorbox.css">
+	<link type="text/css" rel="stylesheet" href="/style/mediaquery.css">
+    <title>ダジャレクラウド Beta - お問い合わせ</title>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="/lib/js/jquery.colorbox-min.js"></script>
+	<script type="text/javascript" language="javascript">
+		var ua =navigator.userAgent,w=$(window);;
+		if(ua.indexOf("iPhone")>-1 || ua.indexOf("iPad")>-1 || ua.indexOf("Android")>-1){
+			$(function(){
+				$('.container .forms').append('<div id="close"><a href="http://dajare1242.appspot.com/">戻る</a></div>');
+			});
+		}
+	</script>
+  </head>
+  <body>
+  	<div id="wrapper" class="container mail">
+  		<div id="header">
+  			<div id="logo" style="float:none;text-align:center;">
+  				<a href="/"><img src="/lib/images/logo_alpha.png"></a>
+  			</div>
+  		</div>
+  		<div class="forms">
+  			<div id="close"><a href="/">トップへ戻る</a></div>
+  			<h3>お問い合わせ</h3>
+  			<p class="lead">ダジャレクラウドに関するご要望・ご意見は以下のフォームにお願いいたします。<br>
+  				※開発者の皆様へダジャレクラウドでクロールしているダジャレのデータに関して利用する場合にもこのお問い合わフォームをご利用ください。
+  			お問い合わせ内容には、「ダジャレクラウドAPIの使用希望」の旨を書き込みください。</p>
+  			<form name="feedback" method="POST" action="/mail">
+  				<div class="lineText">
+	  				<span>お名前(ニックネーム)</span><span class="warn">(*必須)</span><br>
+	  				<input name="name" type="text">
+  				</div>
+  				<div class="lineText">
+	  				<span>E-mail</span><span class="warn">(*必須)</span><br>
+	  				<input name="email" type="text">
+  				</div>
+  				<div class="multiText">
+	  				<span>お問い合わせ内容</span><span class="warn">(*必須)</span><br>
+	  				<textarea name="body"></textarea>
+	  			</div>
+	  			<br>
+	  			<div class="lineText">
+  					<input type="submit" value="送信" class="submits">
+  				</div>
+  				<p>※ お問い合わせ送信後、改めてダジャレクラウド開発担当よりご連絡差し上げます。</p>
+  				<p>皆様のご利用をお待ちしております。<br>よろしくお願いいたします。</p>
+  			</form>
+  			<div id="close"><a href="/">トップへ戻る</a></div>
+  		</div>
+  	</div>
+  </body>
+</html>
+
+

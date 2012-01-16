@@ -1,0 +1,474 @@
+@charset utf-8;
+*,html{
+	font-family:'Meiryo';
+}
+body{
+	margin:0;
+	padding:0;
+	background-image:url(/lib/images/body_bg.png);
+}
+
+#logo{
+	float:left;
+	margin:8px;
+}
+#logo .utilityPanel{
+	
+}
+#utility{
+	float:right;
+	width:450px;
+}
+#SocialButton{
+	float:left;
+	border:8px #ccc solid;
+	background-color:#f0f0f0;
+	padding:14px;
+	margin:8px 8px 8px 8px;
+}
+#totalDajare{
+	/*text-align:right;*/
+	background-color:#f5f5f5;
+	padding:16px 8px;
+	font-size:24pt;
+	font-family:'Helvetica';
+	text-align:right;
+}
+.utilityPanel{
+	margin:8px;
+	border:8px #ccc solid;
+}
+.utilityPanel .comment{
+	background-color:#333;
+	padding:12px;
+	color:white;
+	float:left;
+	width:190px;
+}
+.global_menu a{
+	display:block;
+	width:32px;
+	height:32px;
+	background-position:center center;
+	background-repeat:no-repeat;
+	/*padding:8px;*/
+}
+.global_menu a:hover{
+	background-color:#666;
+}
+a.dajareInfo{
+	background-image:url(/lib/images/icon/access.png);
+}
+a.dajareFeedBack{
+	margin:8px;
+	background-image:url(/lib/images/icon/comment.png);
+}
+a.dajareAPI {
+	background-image:url(/lib/images/icon/access.png);
+}
+a.dajareLogin{
+	background-image:url(/lib/images/icon/login.png);
+}
+/*#E33E17*/
+.utilityPanel .comment span.red{
+	color:#E33E17;
+}
+a.bokeBtn{
+	color:#E33E17;
+	text-decoration:none;
+}
+a.bokeBtn:hover{
+	text-decoration:underline;
+}
+#DajareNum{
+	font-family:'Arial Black';
+	font-size:150% !important;
+}
+#dajareTweet{
+	background-color:#f5f5f5;
+	padding:16px 8px;
+}
+#tw_follow,#tw_share{
+	float:left;
+	width:130px;
+}
+/*Search Panel*/
+.searchTitle{
+	color:white;
+	padding:6px;
+	background-color:#333;
+	width:240px;
+	font-size:18pt;
+	text-align:center;
+	float:left;
+}
+#searchResultPanel{
+	margin:8px;
+	position:relative;
+}
+#dse,#dsesubmit{
+	border:1px #ccc solid;
+	font-size:18pt;
+	padding:3px;
+}
+#dse{
+	width:70%;
+}
+#dsesubmit{background-color:#e33e17;border:0px #ccc solid;color:white;padding:3px 24px;}
+
+#daj,#daj_rank{
+	margin:8px;
+	background-color:white;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+/*84b9d7*/
+#daj{
+	border:5px #84b9d7 solid;
+}
+#daj_rank{
+	border:5px #f4db07 solid;
+}
+#daj_rank{display:none;}
+.search #daj{
+	border:5px #333 solid;
+}
+#daj h3,#daj_rank h3{
+	margin:0 0;
+	padding:24px 0 0 64px;
+	background-color:white;
+	border:0px #e0e0e0 solid;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background-repeat:no-repeat;
+	background-position:8px center;
+	height:48px;
+}
+/* Rank : Border f4db07 */
+#daj h3{
+	background-image:url(/lib/images/icon/title_icon01.png);
+}
+#daj_rank h3{
+	background-image:url(/lib/images/icon/title_icon02.png);
+}
+.csvDajare{
+	padding:12px !important;
+	margin:1px;
+	/*background-color:#f5f5f5;*/
+	/*background-color:#f0f0f0;*/
+	font-size:14pt;
+	position:relative;
+	border-bottom:1px #ccc solid;
+}
+#daj_rank .csvDajare{
+	border-bottom:1px #f4db07 dotted;
+}
+.csvDajare a{
+	color:#0099cc;
+	text-decoration:none;
+}
+.csvDajare a:hover{
+	text-decoration:underline;
+}
+.csvDajare div.ranks{
+	width:80px;
+	padding:12px;
+	border:3px #f0f0f0 dotted;
+	text-align:center;
+	position:relative;
+	top:15px;
+	background-color:#fff;
+}
+.csvDajare div.ranks span{
+	font-size:30pt;
+	color:#e33e17;
+}
+.csvDajare span.date{
+	color:#ccc;
+	display:block;
+	text-align:right;
+	font-size:70%;
+	padding:3px 0;
+}
+.csvDajare span.text{
+	color:#333;
+}
+#daj_rank .csvDajare span.text{
+	padding:16px;
+	margin:0 0 0 20px;
+	display:block;
+	background-color:#fffbdb;
+}
+.csvDajare span.profile_image{
+	position:absolute;
+	right:8px;
+	top:8px;
+	
+}
+.status #daj{
+	width:99% !important;
+}
+.status .csvDajare span.profile_image{
+	position:static;
+	float:left;
+	margin:0 0 0 40px;
+}
+.status .csvDajare span.source{
+	text-align:right;
+	display:block;
+	padding:0 48px 0 0;
+}
+.status .csvDajare span.date{
+	position:static;
+	float:right;
+	margin:12px 48px 0 48px;
+}
+.status .csvDajare span.text{
+	padding:0 32px;
+	display:block;
+}
+.Adsense{
+	text-align:center;
+}
+.status #SocialGraph .button{
+	text-align:right !important;
+}
+#daj_rank .csvDajare span.profile_image{
+	position:absolute;
+	left:131px;
+	top:27px;
+	font-size:12pt;
+	display:block;
+	background-color:#fefefe;
+}
+#daj_rank .csvDajare span.profile_image img{
+	border:0px;
+	float:left;
+}
+#daj_rank .csvDajare span.profile_image .idText{
+	float:left;
+	margin:15px 0 0 8px;
+}
+.csvDajare span.profile_image img{
+	border:3px #e0e0e0 solid;
+}
+#dseResult{
+	margin:8px 8px;
+	background-color:#fff;
+	font-size:18pt;
+	text-align:left;
+	border:5px #e0e0e0 solid;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+#dseResult ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#dseResult ul a{
+	color:#e33e17;
+	display:block;
+	float:left;
+	margin:3px;
+	text-decoration:none;
+}
+#dseResult ul a:hover{
+	text-decoration:underline;
+}
+.searchResultTitle{
+	padding:8px;
+	background-color:#f5f5f5;
+}
+#dseReloads{
+	color:black;
+	font-size:18pt;
+	text-align:right;
+	background-color:#333;
+	padding:8px;
+	position:absolute;
+	top:105px;
+	right:0;
+}
+#dseReloads a{
+	text-decoration:none;
+	color:#fff;
+}
+#dseReloads a:hover{
+	text-decoration:underline;
+}
+.word a{
+	color:#e33e17;
+}
+.resultNum{
+	font-family:'Arial Black';
+	font-size:120% !important;
+}
+#screen-name{
+	display:none !important;
+}
+#custom-tw_share,#custom-tw_follow{
+	float:right;
+}
+#custom-tw_share a,#custom-tw_follow a{
+	display:block;
+	width:89px;
+	height:89px;
+	background-repeat:no-repeat;
+}
+#custom-tw_share a{
+	background-image:url(../images/tw_tweet.png);
+}
+#custom-tw_follow a{
+	background-image:url(../images/tw_follow.png);
+}
+#global_header{
+	/*display:none;*/
+	background-color:#333;
+}
+#global_header .gm_left{
+	float:left;
+}
+#global_header .gm_left ul,#global_header .gm_right ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#global_header .gm_left ul li,#global_header .gm_right ul li{
+	float:left;
+}
+#global_header .gm_left ul li a,#global_header .gm_right ul li a{
+	color:white;
+	display:block;
+	margin:4px;
+	text-decoration:none;
+}
+#global_header .gm_left ul li a:hover,#global_header .gm_right ul li a:hover{
+	text-decoration:underline;
+}
+#global_header .gm_right{
+	float:right;
+	margin:0 8px 0 0;
+}
+.dajare-fav{
+	background-repeat:no-repeat;
+	background-image:url(/lib/images/icon/fav.png);
+	width:82px;
+	height:64px;
+}
+.backToTop{
+	background-color:#E33E17;
+	float:right !important;
+	margin:8px;
+}
+.backToTop a{
+	text-decoration:none;	
+	color:white;
+	padding:16px;
+	display:block;
+	font-size:36pt;
+}
+.backToTop a:hover{
+	background-color:#E33E17;
+}
+.mob{
+	display:none;
+}
+.status .header .backToTop{
+	font-size:36pt;float:right;
+}
+.status .csvDajare .text{
+	font-size:36pt;
+}
+.mail{
+	margin:12px auto;
+	width:95% !important;
+	background-color:white !important;
+	padding:16px;
+	border:0 #f0f0f0 solid;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+.lineText input{
+	width:30%;
+	border:5px #f0f0f0 solid;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background-color:#fefefe;
+	font-size:18pt;
+}
+.lineText input.submits{
+	border:10px #f0f0f0 solid;
+	width:52% !important;
+	background-color:#ccc;
+	color:white;
+}
+.multiText input{
+	
+}
+.multiText textarea{
+	width:50%;
+	height:200px;
+	border:10px #f0f0f0 solid;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	background-color:#fefefe;
+	font-size:18pt;
+}
+.forms h3{
+	border-left:10px #333 solid;
+	padding:8px 12px;
+}
+.forms .lead{
+	padding:12px;
+	background-color:#f4f4f4;
+	color:#333;
+}
+.warn{
+	color:red;
+}
+#usermode{
+	display:none;
+}
+#usermode ul{
+	width:200px;
+	position:absolute;
+	top:36px;
+	right:8px;
+	background-color:white;
+	border:8px #333 solid;
+}
+#usermode ul li{
+	padding:0px;
+	float:none !important;
+}
+#usermode ul li a{
+	background-color:transparent !important;
+	color:#333 !important;
+	width:auto !important;
+	height:auto !important;
+	padding:8px !important;
+	margin:0 !important;
+	text-align:center;
+}
+.forms #close a{
+	display:block;
+	font-size:18pt;
+	padding:16px;
+	text-align:center;
+	background-color:#E33E17;
+	color:white;
+	text-decoration:none;
+}
+.forms #close a:hover{
+	text-decoration:underline;
+}
+.Adsense{
+	background-color:white;
+}
