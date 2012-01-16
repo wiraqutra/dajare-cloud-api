@@ -1,0 +1,19 @@
+#!/bin/adp 
+<%
++rank($r)
+    ,$cnt = 0
+	,$ary == {}
+	,$dat == db.sql@( 'SELECT * FROM keyword_scores order by rank ', [])
+	,$ary = $ary + {$dat}
+    ,$cnt = $cnt + 1
+	,next
+	,$r == { 'total' => $cnt, 'allTotal' => $cnt, 'results' => $ary }
+	;
+
++jsonp($data, $r),$r == sprintf("%s(%s)", =query("callback"), =$data.json),!;
++jsonp($data, $r),$r == json($data),!;
+
+,response_header('Content-Type: application/json; charset=utf-8');
+,rank.jsonp.prtn;
+
+%>

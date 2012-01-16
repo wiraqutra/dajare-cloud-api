@@ -1,0 +1,29 @@
+#!/bin/adp 
+<%
++rank($r)
+    ,$cnt = 0
+	,$ary == {}
+	,$dat == db.sql@( 'SELECT * FROM scores inner join dajares on(scores.id=dajares.id) order by rank ', []).dajare_conv
+	,$ary = $ary + {$dat}
+    ,$cnt = $cnt + 1
+	,next
+	,$r == { 'total' => $cnt, 'allTotal' => $cnt, 'results' => $ary }
+	;
+
++jsonp($data, $r),$r == sprintf("%s(%s)", =query("callback"), =$data.json),!;
++jsonp($data, $r),$r == json($data),!;
+
++kwlog($kw)
+	,db.sql(" SELECT count(*) FROM searchlog WHERE keyword = ? ", [$kw], $rec)
+	,=$rec.int > 0
+	,db.sql(" UPDATE searchlog SET count = count + 1, lastdate = NOW() WHERE keyword = ? ", [$kw])
+	, !;
++kwlog($kw)
+	,db.sql(" INSERT INTO searchlog(keyword, count, lastdate) VALUES( ?, ?, Now()) ", [$kw, 1])
+	, !;
+
+,response_header('Content-Type: application/json; charset=utf-8');
+#,response_header('Content-Disposition: attachment; filename="dajare.json"');
+,rank.jsonp.prtn;
+
+%>

@@ -1,0 +1,20 @@
+application: dajare-api
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /find/.*
+  script: proxy.py
+
+- url: /count/.*
+  script: proxy.py
+
+- url: /iine/.*
+  script: proxy.py
+
+- url: /rank/.*
+  script: proxy.py
+
+- url: /keyword_rank/.*
+  script: proxy.py

@@ -1,0 +1,25 @@
+#!/bin/adp 
+<%
++color($t, $c), 1 == $t % 2, $c == '#E0FFFF', !;
++color($t, $c), 0 == $t % 2, $c == '#FFffE0', !;
+
++dajare_list(@l),db.sql('SELECT * FROM apps order by id', [], @l);
+
+%>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh" content="600">
+</head>
+<body>
+登録アプリケーション一覧  <a href="/">戻る</a>
+<p>
+<table>
+  <tr bgcolor="#E0E0E0"><td>ID</td><td>NAME</td><td>KEY</td><td>EMAIL</td></tr>
+<%,dajare_list(@l)%>
+  <tr bgcolor=<%= color(=times) %> valign="top"><td><%= $l['id']%></td><td><%= $l['name']%></td><td><%= $l['key']%></td><td><%= $l['email']%></td></tr>
+<%,next;%>
+</table>
+</body>
+</html>

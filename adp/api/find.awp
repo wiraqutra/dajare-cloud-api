@@ -1,0 +1,53 @@
+#!/bin/adp 
+<%
++keyword($k),$k == query("keyword").urldecode, !;
++keyword(NIL);
++keywordstr($k),$k == '%' + query("keyword") + '%', !;
++keywordstr('%');
++size($s),query("size", $v), $s == $v.int, !;
++size(20),!;
++page($p),query("page", $v), $p == $v.int, !;
++page(1), !;
++count($c),$c == db.sql( "SELECT count(*) FROM dajares WHERE dajare like ?",[=keywordstr]).int;
+
++find_id($r)
+	,$id == query('id')
+	,$id == 'count'
+	,$r == { 'results' => =count, 'seachBy' => =keyword }
+	,!,;
++find_id($r)
+	,$id == query('id')
+	,$dat == db.sql@( "SELECT *, 0 as rank FROM dajares WHERE source_id = ?",[$id]).dajare_conv
+	,$r == { 'total' => 1, 'allTotal' => 1,'seachBy' => NIL, 'iineFlg' => 0, 'results' => $dat }
+	,!,;
++find_id($r)
+    ,$cnt = 0
+	,$ary == {}
+	,$dat == db.sql@( "SELECT *, 0 as rank FROM dajares WHERE dajare like ? Order By ctime desc  LIMIT ?, ? ", [=keywordstr, (page - 1) * size, =size]).dajare_conv
+	,$ary = $ary + {$dat}
+    ,$cnt = $cnt + 1
+	,next
+	,$r == { 'total' => $cnt, 'allTotal' => =count, 'seachBy' => =keyword, 'results' => $ary }
+	,!,;
++find_id($r)
+	, $r == { 'total' => 0, 'allTotal' => 0, 'seachBy' => =keyword, 'results' => NIL }
+	,!,;
+
++jsonp($data, $r),$r == sprintf("%s(%s)", =query("callback"), =$data.json),!;
++jsonp($data, $r),$r == json($data),!;
+
++kwlog($kw)
+	,db.sql(" SELECT count(*) FROM searchlog WHERE keyword = ? ", [$kw], $rec)
+	,=$rec.int > 0
+	,db.sql(" UPDATE searchlog SET count = count + 1, lastdate = NOW() WHERE keyword = ? ", [$kw])
+	, !;
++kwlog($kw)
+	,db.sql(" INSERT INTO searchlog(keyword, count, lastdate) VALUES( ?, ?, Now()) ", [$kw, 1])
+	, !;
+
+,response_header('Content-Type: application/json; charset=utf-8');
+#,response_header('Content-Disposition: attachment; filename="dajare.json"');
+,$k == query("keyword").urldecode, kwlog($k);
+,find_id.jsonp.prtn;
+
+%>

@@ -1,0 +1,26 @@
+#!/bin/adp 
+<%
++color($t, $c), 1 == $t % 2, $c == '#E0FFFF', !;
++color($t, $c), 0 == $t % 2, $c == '#FFffE0', !;
+
++dajare_list(@l),db.sql('SELECT rank, scores.score, dajare, handle, ADDTIME(ctime, "9:00:00") as jp_ctime, good_count, source_id FROM scores inner join dajares on(scores.id=dajares.id) order by rank', [], @l);
+
+%>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="ja">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh" content="600">
+</head>
+<body>
+ランキング  <a href="/">戻る</a>
+<p>
+<table>
+  <tr bgcolor="#E0E0E0"><td>順位</td><td>スコア</td><td>時刻</td><td>ハンドル名</td><td>ダジャレ</td><td>いいね</td></tr>
+<%,dajare_list(@l)%>
+  <tr bgcolor=<%= color(=times) %> valign="top"><td><%= $l['rank']%></td><td><%= $l['score']%></td><td><%= $l['jp_ctime']%></td><td><%= $l['handle']%></td><td><%= $l['dajare']%></td><td><%= $l['good_count']%><br><a href="http://dajare-api.appspot.com/iine/?id=<%=$l['source_id']%>&fbid=katsuhisa_ohfuj&key=7C23654DEF84EF990D00C67C5CD5AA183607649A" >いいね</a>
+<a href="http://dajare-api.appspot.com/iine/?id=<%=$l['source_id']%>&fbid=katsuhisa_ohfuj&key=7C23654DEF84EF990D00C67C5CD5AA183607649A" >いいねの取得</a></td></tr>
+<%,next;%>
+</table>
+</body>
+</html>
